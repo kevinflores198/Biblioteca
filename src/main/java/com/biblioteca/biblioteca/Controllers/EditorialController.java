@@ -9,28 +9,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.biblioteca.biblioteca.Exceptions.MyException;
-import com.biblioteca.biblioteca.Services.AutorService;
+import com.biblioteca.biblioteca.Services.EditorialService;
 
 @Controller
-@RequestMapping("/autor")
-public class AutorController {
+@RequestMapping("/editorial")
+public class EditorialController {
 
     @Autowired
-    private AutorService autorService;
+    private EditorialService editorialService;
 
     @GetMapping("/registrar")
     public String registrar() {
-        return "autor_form.html";
+        return "editorial_form.html";
     }
 
     @PostMapping("/registro")
     public String registro(@RequestParam String name) {
 
         try {
-            autorService.makeAutor(name);
+            editorialService.makeEditoial(name);
         } catch (MyException e) {
             Logger.getLogger(AutorController.class.getName()).log(Level.SEVERE, null, e);
-            return "autor_form.html";
+            return "editorial_form.html";
         }
         return "index.html";
     }

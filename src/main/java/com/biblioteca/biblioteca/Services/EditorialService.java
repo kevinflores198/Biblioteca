@@ -29,13 +29,14 @@ public class EditorialService {
     }
 
     public List<Editorial> editoriallist() {
-
         List<Editorial> editorials = new ArrayList<>();
         editorials = editorialRepository.findAll();
         return editorials;
     }
 
-    public void modifyEditorial(String name, String id) {
+    public void modifyEditorial(String id, String name) throws MyException{
+
+        validate(name);
         Optional<Editorial> editorialAnswer = editorialRepository.findById(id);
 
         if (editorialAnswer.isPresent()) {
@@ -48,7 +49,7 @@ public class EditorialService {
 
      private void validate(String name) throws MyException {
         if (name == null || name.isEmpty()) {
-            throw new MyException("ID cannot be null.");
+            throw new MyException("Name cannot be null or empty.");
         }
     }
 }

@@ -3,7 +3,6 @@ package com.biblioteca.biblioteca.Services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.biblioteca.biblioteca.Entities.Autor;
@@ -18,9 +17,9 @@ public class AutorService {
     private AutorRepository autorRepository;
 
     @Transactional
-    public void makeAutor(String id, String name) throws MyException {
+    public void makeAutor(String name) throws MyException {
 
-        validate(id, name);
+        validate(name);
 
         Autor autor = new Autor();
 
@@ -37,7 +36,7 @@ public class AutorService {
 
     public void modifyAutor(String id, String name) throws MyException {
 
-        validate(id, name);
+        validate(name);
         Optional<Autor> autorAnswer = autorRepository.findById(id);
 
         if (autorAnswer.isPresent()) {
@@ -48,11 +47,7 @@ public class AutorService {
         }
     }
 
-    private void validate(String id, String name) throws MyException {
-
-        if (id == null) {
-            throw new MyException("ID cannot be null.");
-        }
+    private void validate(String name) throws MyException {
         if (name == null || name.isEmpty()) {
             throw new MyException("Name cannot be null or empty.");
         }
