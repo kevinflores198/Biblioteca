@@ -11,11 +11,9 @@ import jakarta.persistence.TemporalType;
 @Entity
 public class Book {
 
-    // El identificador unico de cada libro, clave primaria de cada registro en
-    // base de datos
     @Id
     private Long isbn;
-    private String titule;
+    private String title;
     private Integer type;
 
     //Cuando el libro se registe en el sistema se registrara la fecha de alta
@@ -26,18 +24,14 @@ public class Book {
     private Autor autor;
     @ManyToOne
     private Editorial editorial;
+     
     public Long getIsbn() {
         return isbn;
     }
     public void setIsbn(Long isbn) {
         this.isbn = isbn;
     }
-    public String getTitule() {
-        return titule;
-    }
-    public void setTitule(String titule) {
-        this.titule = titule;
-    }
+    
     public Integer getType() {
         return type;
     }
@@ -61,6 +55,12 @@ public class Book {
     }
     public void setEditorial(Editorial editorial) {
         this.editorial = editorial;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     

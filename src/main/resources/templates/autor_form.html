@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="">Logo</a>
+                <p>Log out</p>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <form action="/autor/registro" method="POST">
+            <h1>Charge autor here</h1>
+            <div class="form-group">
+                <input type="text" class="form-group" name="name" placeholder="Autor name">
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
