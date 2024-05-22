@@ -10,5 +10,5 @@ import com.biblioteca.biblioteca.Entities.Editorial;
 public interface EditorialRepository extends JpaRepository<Editorial, String> {
 
     @Query("SELECT e FROM Editorial e WHERE e.name = :name")
-    public Editorial searchAutor(@Param("name") String name);
+    public Editorial searchEditorial(@Param("name") String name);
 }

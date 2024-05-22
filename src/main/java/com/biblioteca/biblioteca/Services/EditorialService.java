@@ -17,7 +17,7 @@ public class EditorialService {
     private EditorialRepository editorialRepository;
 
     @Transactional
-    public void makeEditoial(String name) throws MyException{
+    public void makeEditorial(String name) throws MyException{
 
         validate(name);
 
@@ -28,7 +28,7 @@ public class EditorialService {
         editorialRepository.save(editorial);
     }
 
-    public List<Editorial> editoriallist() {
+    public List<Editorial> editorialList() {
         List<Editorial> editorials = new ArrayList<>();
         editorials = editorialRepository.findAll();
         return editorials;

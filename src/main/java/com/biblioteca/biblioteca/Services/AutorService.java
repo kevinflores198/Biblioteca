@@ -28,7 +28,7 @@ public class AutorService {
         autorRepository.save(autor);
     }
 
-    public List<Autor> autorlist() {
+    public List<Autor> autorList() {
         List<Autor> autors = new ArrayList<>();
         autors = autorRepository.findAll();
         return autors;

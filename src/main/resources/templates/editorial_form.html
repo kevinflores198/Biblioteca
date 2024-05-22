@@ -15,6 +15,20 @@
                 <input type="text" class="form-group" name="name" placeholder="Editorial name">
             </div>
 
+            <div>
+                <div th:if="${Error!=null}">
+                    <h5>Error</h5>
+                    <p th:text="${Error}"></p>
+                </div>
+            </div>
+
+            <div>
+                <div th:if="${Success!=null}">
+                    <h5>Success</h5>
+                    <p th:text="${Success}"></p>
+                </div>
+            </div>
+
             <button type="submit" class="btn">Submit</button>
         </form>
     </div>
