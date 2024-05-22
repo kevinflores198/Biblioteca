@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <th scope="col">Autor ID</th>
+                <th scope="col">Autor name</th>
+                <th scope="col">Actions</th>
+            </tr>
+            <tbody th:each="autor : ${autors}">
+                <tr>
+                    <th scope="row" th:text="${autor.ID}"></th>
+                    <td th:text="${autor.name}"></td>
+                    <td>
+                        <a th:href="@{/autor/modify/__${autor.ID}__}">modificar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

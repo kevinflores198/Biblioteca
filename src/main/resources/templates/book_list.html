@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Book name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Editorial</th>
+            </tr>
+            <tbody th:each="book : ${books}">
+                <tr>
+                    <th scope="row" th:text="${book.isbn}"></th>
+                    <td th:text="${book.title}"></td>
+                    <td th:text="${book.type}"></td>
+                    <td th:text="${book.autor.name}"></td>
+                    <td th:text="${book.editorial.name}"></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

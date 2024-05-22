@@ -47,7 +47,7 @@ public class BookService {
         bookRepository.save(book);
     }
 
-    public List<Book> booklist() throws MyException {
+    public List<Book> booklist(){
 
         List<Book> books = new ArrayList<>();
         books = bookRepository.findAll();

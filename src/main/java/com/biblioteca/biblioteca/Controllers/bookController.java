@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.biblioteca.biblioteca.Entities.Autor;
+import com.biblioteca.biblioteca.Entities.Book;
 import com.biblioteca.biblioteca.Entities.Editorial;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Services.BookService;
@@ -56,10 +57,24 @@ public class bookController {
 
             model.put("Success", "Book was charged correctly");
         } catch (MyException e) {
+            List<Autor> autors = autorService.autorList();
+            List<Editorial> editorials = editorialService.editorialList();
+
+            model.addAttribute("autors", autors);
+            model.addAttribute("editorials", editorials);
             model.put("Error", e.getMessage());
             return "book_form.html";
         }
         return "index.html";
+    }
+
+    @GetMapping("/list")
+    public String listing(ModelMap model){
+        List<Book> books = bookService.booklist();
+
+        model.addAttribute("books", books);
+
+        return "book_list.html";
     }
 
 }

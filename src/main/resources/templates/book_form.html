@@ -20,6 +20,20 @@
             <div class="form-group">
                 <input type="number" class="form-group" name="type" placeholder="amount">
             </div>
+            <div class="">
+                <select name="idAutor">
+                    <option>Select Autor</option>
+                    <option th:each="autor : ${autors}" th:value="${autor.ID}" th:text="${autor.name}">
+                </select>
+            </div>
+            <div class="">
+                <select name="idEditorial">
+                    <option>Select Editorial</option>
+                    <option th:each="editorial : ${editorials}" th:value="${editorial.ID}" th:text="${editorial.name}">
+                </select>
+            </div>
+
+            <button type="submit" class="btn">Save</button>
 
             <div>
                 <div th:if="${Error!=null}">
@@ -35,24 +49,7 @@
                 </div>
             </div>
 
-            <div class="">
-                <select name="idAutor">
-                    <option>Select Autor</option>
-                    <option th:each="autor : ${autors}"
-                            th:value="${autor.id}"
-                            th:text="${autor.name}">
-                </select>
-            </div>
-            <div class="">
-                <select name="idEditorial">  
-                    <option>Select Editorial</option>
-                    <option th:each="editorial : ${editorials}"
-                            th:value="${editorial.id}" 
-                            th:text="${editorial.name}">
-                </select>
-            </div>
 
-            <button type="submit" class="btn ">Save</button>
         </form>
     </div>
 </body>

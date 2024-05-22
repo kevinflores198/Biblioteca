@@ -34,7 +34,7 @@ public class AutorService {
         return autors;
     }
 
-    public void modifyAutor(String id, String name) throws MyException {
+    public void modifyAutor(String name, String id) throws MyException {
 
         validate(name);
         Optional<Autor> autorAnswer = autorRepository.findById(id);
@@ -45,6 +45,10 @@ public class AutorService {
             autor.setName(name);
             autorRepository.save(autor);
         }
+    }
+
+    public Autor getOne(String id){
+        return autorRepository.getOne(id);
     }
 
     private void validate(String name) throws MyException {
