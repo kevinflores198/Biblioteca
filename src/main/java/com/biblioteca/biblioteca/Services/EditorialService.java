@@ -46,6 +46,12 @@ public class EditorialService {
             editorialRepository.save(editorial);
         }
     }
+    
+    @SuppressWarnings("deprecation")
+    public Editorial getOne(String id){
+        return editorialRepository.getOne(id);
+    }
+
 
      private void validate(String name) throws MyException {
         if (name == null || name.isEmpty()) {

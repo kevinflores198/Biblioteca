@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public class AutorService {
 
     @Autowired
-    private AutorRepository autorRepository;
+    AutorRepository autorRepository;
 
     @Transactional
     public void makeAutor(String name) throws MyException {
@@ -34,10 +34,10 @@ public class AutorService {
         return autors;
     }
 
-    public void modifyAutor(String name, String id) throws MyException {
+    public void modifyAutor(String ID, String name) throws MyException {
 
         validate(name);
-        Optional<Autor> autorAnswer = autorRepository.findById(id);
+        Optional<Autor> autorAnswer = autorRepository.findById(ID);
 
         if (autorAnswer.isPresent()) {
 
@@ -47,11 +47,12 @@ public class AutorService {
         }
     }
 
-    public Autor getOne(String id){
-        return autorRepository.getOne(id);
+    @SuppressWarnings("deprecation")
+    public Autor getOne(String ID){
+        return autorRepository.getOne(ID);
     }
 
-    private void validate(String name) throws MyException {
+    public void validate(String name) throws MyException {
         if (name == null || name.isEmpty()) {
             throw new MyException("Name cannot be null or empty.");
         }

@@ -13,12 +13,17 @@
             <tr>
                 <th scope="col">Editorial ID</th>
                 <th scope="col">Editorial name</th>
+                <th scope="col">Actions</th>
             </tr>
             <tbody th:each="editorial : ${editorials}">
                 <tr>
                     <th scope="row" th:text="${editorial.ID}"></th>
                     <td th:text="${editorial.name}"></td>
+                    <td>
+                        <a th:href="@{/editorial/modify/__${editorial.ID}__}">Modify </a>
+                    </td>
                 </tr>
+                
             </tbody>
         </table>
     </div>

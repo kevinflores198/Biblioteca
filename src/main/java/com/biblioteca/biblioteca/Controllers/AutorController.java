@@ -50,17 +50,19 @@ public class AutorController {
         return "autor_list.html";
     }
 
-    @GetMapping("/modify/{id}")
-    public String modity(@PathVariable String id, ModelMap model) {
-
-        model.put("autor", autorService.getOne(id));
+    @GetMapping("/modify/{ID}")
+    public String modify(@PathVariable String ID, ModelMap model) {
+System.out.println("HELLO");
+        model.put("autor", autorService.getOne(ID));
         return "autor_modify.html";
     }
 
-    @PostMapping("/modify/{id}")
-    public String modity(@PathVariable String id, String nombre, ModelMap model) {
+    @PostMapping("/modify/{ID}")
+    public String modify(@PathVariable String ID,
+            String name,
+            ModelMap model) {
         try {
-            autorService.modifyAutor(id, nombre);
+            autorService.modifyAutor(ID, name);
             return "redirect:../list";
         } catch (MyException e) {
             model.put("Error", e.getMessage());

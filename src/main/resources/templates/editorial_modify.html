@@ -9,12 +9,11 @@
 
 <body>
     <div>
-        <form th:action="@{/autor/modify/__${autor.ID}__}" method="POST">
+        <form th:action="@{/editorial/modify/__${editorial.ID}__}" method="POST">
             <input hidden th:value="${ID}" name="ID">
             <div>
-                <label>Modify Autor</label>
-                <!-- en este input deberia usar th:value="${autor.name}" pero sin eso, funciona a la perfeccion-->
-                <input type="text" name="name">
+                <label>Modify Editorial</label>
+                <input th:value="${editorial}" type="text" name="name">
             </div>
             <button type="submit">Update</button>
         </form>

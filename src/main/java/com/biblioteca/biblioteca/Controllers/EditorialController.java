@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,5 +47,22 @@ public class EditorialController {
 
         model.addAttribute("editorials", editorials);
         return "editorial_list.html";
+    }
+
+    @GetMapping("/modify/{ID}")
+    public String modify(@PathVariable String ID, ModelMap model) {
+        model.put("editorial", editorialService.getOne(ID));
+        return "editorial_modify.html";
+    }
+
+    @PostMapping("/modify/{ID}")
+    public String modify(@PathVariable String ID, String name, ModelMap model) {
+        try {
+            editorialService.modifyEditorial(name, ID);
+            return "redirect:../list";
+        } catch (Exception e) {
+            model.put("Error", e.getMessage());
+            return "editorial_modify.html";
+        }
     }
 }
