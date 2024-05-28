@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form th:action="@{/logincheck}" method="post">
+            <div>
+                <h3>Access to Biblioteca</h3>
+            </div>
+            <div class="">
+                <input type="text" name="email" placeholder="email" th:value="${email}">
+            </div>
+            <div class="">
+                <input type="password" name="password" placeholder="password" th:value="${password}">
+            </div>
+            <button type="submit">log in</button>
+            
+            <div>
+                <div th:if="${Error!=null}">
+                    <h5>Error</h5>
+                    <p th:text="${Error}"></p>
+                </div>
+            </div>
+
+            <div>
+                <div th:if="${Success!=null}">
+                    <h5>Success</h5>
+                    <p th:text="${Success}"></p>
+                </div>
+            </div>
+            <a th:href="@{/}">Back to index</a>
+        </form>
+    </div>
+</body>
+
+</html>

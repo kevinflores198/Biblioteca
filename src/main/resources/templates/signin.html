@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <form th:action="@{/signedin}" method="post">
+            <div>
+                <h3>Signin!</h3>
+            </div>
+            <div class="">
+                <input type="text" name="name" placeholder="name" th:value="${name}">
+            </div>
+            <div class="">
+                <input type="text" name="email" placeholder="email" th:value="${email}">
+            </div>
+            <div class="">
+                <input type="password" name="password" placeholder="password" th:value="${password}">
+            </div>
+            <div class="">
+                <input type="password" name="password2" placeholder="repeat password" th:value="${password2}">
+            </div>
+            <button type="submit">signin</button>
+            <div>
+                <div th:if="${Error!=null}">
+                    <h5>Error</h5>
+                    <p th:text="${Error}"></p>
+                </div>
+            </div>
+
+            <div>
+                <div th:if="${Success!=null}">
+                    <h5>Success</h5>
+                    <p th:text="${Success}"></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
