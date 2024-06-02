@@ -31,8 +31,8 @@ public class bookController {
      * @param model
      * @return
      */
-    @GetMapping("/registrar")
-    public String registrar(ModelMap model) {
+    @GetMapping("/signin")
+    public String signin(ModelMap model) {
 
         List<Autor> autors = autorService.autorList();
         List<Editorial> editorials = editorialService.editorialList();
@@ -43,8 +43,8 @@ public class bookController {
         return "book_form.html";
     }
 
-    @PostMapping("/registro")
-    public String registro(
+    @PostMapping("/signedin")
+    public String signedin(
             @RequestParam(required = false) Long isbn,
             @RequestParam String title,
             @RequestParam(required = false) Integer type,

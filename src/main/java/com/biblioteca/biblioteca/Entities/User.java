@@ -1,9 +1,7 @@
 package com.biblioteca.biblioteca.Entities;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import com.biblioteca.biblioteca.Enumerations.Rol;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -23,6 +21,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    public User() {
+    }
 
     public String getID() {
         return ID;
@@ -63,4 +64,5 @@ public class User {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
 }

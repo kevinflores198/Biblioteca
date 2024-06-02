@@ -1,6 +1,7 @@
 package com.biblioteca.biblioteca.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class PortalController {
     }
 
     @GetMapping("/signin")
-    public String registrar() {
+    public String signin() {
         return "signin.html";
     }
 
@@ -34,7 +35,7 @@ public class PortalController {
 
         try {
             userService.signin(name, email, password, password2);
-            model.put("Success", "User logged in propertly");
+            model.put("Success", "User signed in propertly");
         } catch (MyException e) {
             model.put("Error", e.getMessage());
             model.put("name", name);
@@ -53,6 +54,7 @@ public class PortalController {
         return "login.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/main")
     public String main() {
         return "main.html";

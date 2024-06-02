@@ -16,7 +16,7 @@ public class Book {
     private String title;
     private Integer type;
 
-    //Cuando el libro se registe en el sistema se registrara la fecha de alta
+    //Cuando el libro se registe en el sistema se signina la fecha de alta
     @Temporal(TemporalType.DATE)
     private Date alta;
 

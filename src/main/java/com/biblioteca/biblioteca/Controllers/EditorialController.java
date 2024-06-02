@@ -21,13 +21,13 @@ public class EditorialController {
     @Autowired
     private EditorialService editorialService;
 
-    @GetMapping("/registrar")
-    public String registrar() {
+    @GetMapping("/signin")
+    public String signin() {
         return "editorial_form.html";
     }
 
-    @PostMapping("/registro")
-    public String registro(@RequestParam String name, ModelMap model) {
+    @PostMapping("/signedin")
+    public String signedin(@RequestParam String name, ModelMap model) {
 
         try {
             editorialService.makeEditorial(name);

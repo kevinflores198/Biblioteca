@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+header {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+header nav {
+    align-items: center;
+    justify-content: center;
+}
+
+header nav .container-icon {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+header nav .container-icon .fa-solid {
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(42, 42, 42);
+}
+
+header nav .icono-menu {
+    position: relative;
+}
+
+header nav .logo {
+    display: flex;
+    justify-content: center;
+}
+
+header nav .logo a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(42, 42, 42);
+}
+
+header nav .container-items {
+    background-color: rgb(42, 42, 42);
+    box-shadow: 0px 0px 2px 2px rgb(66, 66, 66);
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    transition: all .5s ease;
+}
+
+header nav .container-items ul {
+    padding: 10px;
+}
+
+header nav .container-items li a {
+    list-style: none;
+    display: block;
+    cursor: pointer;
+    color: white;
+    padding: 10px 50px;
+}
+
+header nav .container-items ul li a:hover {
+    background-color: white;
+    color: rgb(42, 42, 42);
+    transition: 0.3s;
+}
+
+header nav .container-items li a {
+    text-decoration: none;
+    color: white;
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+.active {
+    transform: translate(-1500px);
+}
+
+.opacity {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all .5s ease;
+}
+
+.hr {
+    display: flex;
+    justify-content: center;
+}
+
+hr {
+    width: 80%;
+}
+
+#main-menu {
+    background-image: url(/img/main-menu-back.jpg);
+    padding: 30px;
+}
+
+#main-menu main .container h1 {
+    color: white;
+    padding: 10px;
+    font-size: 50px;
+
+}
+
+#main-menu main .container h3 {
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+
+}
+
+#main-menu main .container div {
+    padding: 10px;
+}
+
+#main-menu main .container div button{
+    padding: 10px;
+    background-color: chartreuse;
+    border-radius: 10px;
+} 
+
+#main-menu main .container div button:hover{
+    background-color: rgb(185, 243, 128);
+} 
+
+
+#main-menu main .container div button:active{
+    background-color: rgb(216, 236, 195);
+} 
+
+#main-menu main .container div button a{
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}

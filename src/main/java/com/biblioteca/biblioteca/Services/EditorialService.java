@@ -46,10 +46,9 @@ public class EditorialService {
             editorialRepository.save(editorial);
         }
     }
-    
-    @SuppressWarnings("deprecation")
+  
     public Editorial getOne(String id){
-        return editorialRepository.getOne(id);
+        return editorialRepository.getReferenceById(id);
     }
 
 

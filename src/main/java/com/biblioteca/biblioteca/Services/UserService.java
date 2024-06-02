@@ -11,15 +11,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
 import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Enumerations.Rol;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Repositories.UserRepository;
 
-import jakarta.servlet.http.HttpSession;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -31,6 +27,7 @@ public class UserService implements UserDetailsService {
     public void signin(String name, String email, String password, String password2) throws MyException {
 
         validate(name, email, password, password2);
+
         User user = new User();
 
         user.setName(name);
@@ -58,28 +55,29 @@ public class UserService implements UserDetailsService {
         }
     }
 
+
+    public User getOne(String ID){
+        return userRepository.getReferenceById(ID);
+    }
+
+    @Transactional
+    public List<User> listarUsuarios() {
+
+        List<User> usuarios = new ArrayList<>();
+        usuarios = userRepository.findAll();
+        return usuarios;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        User user = userRepository.searchEmail(email);
-
-        if (user != null) {
-
-            List<GrantedAuthority> permission = new ArrayList<>();
-
-            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + user.getRol().toString());
-
-            permission.add(p);
-
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-
-            HttpSession session = attr.getRequest().getSession(true);
-
-            session.setAttribute("usuariosession", user);
+        User usuario = userRepository.searchEmail(email);
+        if (usuario!=null) {
+            List<GrantedAuthority> permiso = new ArrayList<>();
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+            permiso.add(p);
 
             return (UserDetails) new User();
-        } else {
-            return null;
         }
+        return null;
     }
 }

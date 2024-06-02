@@ -47,9 +47,9 @@ public class AutorService {
         }
     }
 
-    @SuppressWarnings("deprecation")
+
     public Autor getOne(String ID){
-        return autorRepository.getOne(ID);
+        return autorRepository.getReferenceById(ID);
     }
 
     public void validate(String name) throws MyException {

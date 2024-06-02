@@ -22,13 +22,13 @@ public class AutorController {
     @Autowired
     private AutorService autorService;
 
-    @GetMapping("/registrar")
-    public String registrar() {
+    @GetMapping("/signin")
+    public String signin() {
         return "autor_form.html";
     }
 
-    @PostMapping("/registro")
-    public String registro(@RequestParam String name, ModelMap model) {
+    @PostMapping("/signedin")
+    public String signedin(@RequestParam String name, ModelMap model) {
 
         try {
             autorService.makeAutor(name);

@@ -1,11 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="https://kit.fontawesome.com/92dadc1c6f.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <h1>Hola index</h1>
+    <header>
+        <nav>
+            <div class="container-icon">
+                <div class="icono-menu">
+                    <i id="fa-solid" class="fa-solid fa-bars"></i>
+                </div>
+
+                <div class="logo">
+                    <a href="">Biblioteca</a>
+                </div>
+            </div>
+            <div id="container-items" class="container-items active">
+                <ul>
+                    <li class="">
+                        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Books
+                        </a>
+                        <ul class="" aria-labelledby="navbarDropdown">
+                            <li><a class="" th:href="@{/book/list}">Book List</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Editorials
+                        </a>
+                        <ul class="" aria-labelledby="navbarDropdown">
+                            <li><a class="" th:href="@{/editorial/list}">Editorial List</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Autors
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="" th:href="@{/autor/list}">Autor List</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Perfil
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/logout">Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<div class="hr">
+    <hr>
+</div>
+
+    <div id="main-menu">
+
+        <div th:if="${Success}!=null" class="">
+            <div class="">
+                <h5 class="">Exito</h5>
+                <p class="" th:text="${Success}"></p>
+            </div>
+        </div>
+        <div th:if="${Error}!=null" class="">
+            <div class="">
+                <h5 class="">Error ð</h5>
+                <p class="" th:text="${Error}"></p>
+            </div>
+        </div>
+        <main>
+            <div class="container">
+                <h1>BIBLIOTECA</h1>
+                <h3>Find all books here</h3>
+                <div>
+                    <button><a href="">Book list</a></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <h1>You may know more about us.</h1>
+        <div>
+            <h2>News</h2>
+            <a href="">Where do we help?</a>
+            <a href="">How to learn more</a>
+            <a href="">Employee</a>
+            <a href="">Reports</a>
+        </div>
+        <div>
+            <h2>Resorces</h2>
+            <a href="">Contact us</a>
+            <a href="">Events</a>
+            <a href="">Shipments</a>
+            <a href="">Address</a>
+        </div>
+        <div>
+            <h2>Social Media</h2>
+            <a href="">Instagram</a>
+            <a href="">Twitter</a>
+            <a href="">Youtube</a>
+            <a href="">Twitch</a>
+        </div>
+        <div>
+            <h2>Who are we?</h2>
+            <a href="">Who are we?</a>
+            <a href="">Our history</a>
+            <a href="">Our goals</a>
+        </div>
+    </footer>
+
+    <script src="/script/script.js"></script>
 </body>
+
 </html>
