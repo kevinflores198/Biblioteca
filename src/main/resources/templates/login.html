@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head th:replace= "/fragments/head :: head"></head>
+
 
 <body>
+
+    <header th:replace= "/fragments/navbar :: header"></header>
+
     <div>
         <form th:action="@{/logincheck}" method="post">
             <div>
@@ -37,6 +37,9 @@
             <a th:href="@{/}">Back to index</a>
         </form>
     </div>
+    <footer th:replace= "/fragments/footer :: footer"></footer>
+    <script src="/script/script.js"></script>
+
 </body>
 
 </html>

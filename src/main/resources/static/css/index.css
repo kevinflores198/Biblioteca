@@ -170,6 +170,36 @@ header nav .container-items ul li:hover .dropdown {
     color: black;
 }
 
+.list {
+    font-size: 20px;
+    justify-content: center;
+    align-items: start;
+    display: flex;
+    width: 100%;
+}
+
+.list .container {
+    padding: 10px;
+}
+
+
+.list .container table {
+    background-color: rgb(66, 66, 66);
+    color: white;
+    border-color: white;
+}
+
+.list .container h1 {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.list th{
+    font-size: 20px;
+    padding: 20px;
+}
+
+
 footer {
     height: 100vh;
     font-size: 1.6em;

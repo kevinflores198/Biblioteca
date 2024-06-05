@@ -1,31 +1,37 @@
 <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head th:replace="/fragments/head :: head"></head>
+
 
 <body>
-    <div>
-        <table>
-            <tr>
-                <th scope="col">Autor ID</th>
-                <th scope="col">Autor name</th>
-                <th scope="col">Actions</th>
-            </tr>
-            <tbody th:each="autor : ${autors}">
+    <header th:replace="/fragments/navbar :: header"></header>
+
+    <div class="list">
+        <div class="container">
+            <table>
+                <h1>Autor table</h1>
                 <tr>
-                    <th scope="row" th:text="${autor.ID}"></th>
-                    <td th:text="${autor.name}"></td>
-                    <td>
-                        <a th:href="@{/autor/modify/__${autor.ID}__}">Modify </a>
-                    </td>
+                    <th scope="col">Autor ID</th>
+                    <th scope="col">Autor name</th>
+                    <th SEC:AUTHORIZE="hasRole('ADMIN')" scope="col">Actions</th>
                 </tr>
-            </tbody>
-        </table>
+                <tbody th:each="autor : ${autors}">
+                    <tr>
+                        <th class="id-product" scope="row" th:text="${autor.ID}"></th>
+                        <td th:text="${autor.name}"></td>
+                        <td>
+                            <a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/autor/modify/__${autor.ID}__}">Modify </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+    <footer th:replace="/fragments/footer :: footer"></footer>
+    <script src="/script/script.js"></script>
+
 </body>
 
 </html>

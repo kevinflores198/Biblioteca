@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head th:replace= "/fragments/head :: head"></head>
 
 <body>
+    <header th:replace= "/fragments/navbar :: header"></header>
+
     <div>
         <table>
             <tr>
                 <th scope="col">Editorial ID</th>
                 <th scope="col">Editorial name</th>
-                <th scope="col">Actions</th>
+                <th SEC:AUTHORIZE="hasRole('ADMIN')" scope="col">Actions</th>
             </tr>
             <tbody th:each="editorial : ${editorials}">
                 <tr>
                     <th scope="row" th:text="${editorial.ID}"></th>
                     <td th:text="${editorial.name}"></td>
                     <td>
-                        <a th:href="@{/editorial/modify/__${editorial.ID}__}">Modify </a>
+                        <a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/editorial/modify/__${editorial.ID}__}">Modify </a>
                     </td>
                 </tr>
                 
             </tbody>
         </table>
     </div>
+    <footer th:replace= "/fragments/footer :: footer"></footer>
+    <script src="/script/script.js"></script>
+
 </body>
 
 </html>

@@ -1,43 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/css.css">
-</head>
+<head th:replace="/fragments/head :: head"></head>
 
 <body>
+    <header th:replace="/fragments/navbar :: header"></header>
 
-    <nav>
-        <ul>
-            <li>
-                <a href="#">hola</a>
-                <ul class="dropdown">
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">hola</a>
-                <ul class="dropdown">
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">hola</a>
-                <ul class="dropdown">
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                    <li><a href="#">hi</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+    <div id="main-menu">
+        <section class="success-error">
+            <div>
+                <div th:if="${Success}!=null" class="">
+                    <div class="">
+                        <h5 class="">Exito</h5>
+                        <p class="" th:text="${Success}"></p>
+                    </div>
+                </div>
+                <div th:if="${Error}!=null" class="">
+                    <div class="">
+                        <h5 class="">Error ð</h5>
+                        <p class="" th:text="${Error}"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main>
+            <div class="container">
+                <h1>BIBLIOTECA</h1>
+                <h3><a href="#" th:if="${session.usuariosession != null}"
+                        th:text="'Hi again ' + session.usuariosession.nombre"></a></h3>
+                <div>
+                    <button><a th:href="@{/book/list}">Book list</a></button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer th:replace="/fragments/footer :: footer"></footer>
+    <script src="/script/script.js"></script>
 
 </body>
 

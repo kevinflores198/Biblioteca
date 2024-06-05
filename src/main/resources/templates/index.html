@@ -1,60 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/index.css">
-    <script src="https://kit.fontawesome.com/92dadc1c6f.js" crossorigin="anonymous"></script>
-</head>
+<head th:replace= "/fragments/head :: head"></head>
 
 <body>
-    <header>
-        <nav>
-            <div class="container-icon">
-                <div class="icono-menu">
-                    <i id="fa-solid" class="fa-solid fa-bars"></i>
-                </div>
-                <div class="logo">
-                    <a href="">Biblioteca</a>
-                </div>
-            </div>
-            <div id="container-items" class="container-items active">
-                <ul>
-                    <li class="dropdown-container">
-                        <a href="#">Books ▼</a>
-                        <ul class="dropdown">
-                            <li><a th:href="@{/book/list}">Book list</a></li>
-                            <li><a th:href="@{/book/signin}">Make books</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-container">
-                        <a href="#">Autors ▼</a>
-                        <ul class="dropdown">
-                            <li><a th:href="@{/autor/list}">Autor list</a></li>
-                            <li><a th:href="@{autor/signin}">Make autor</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown-container">
-                        <a href="#">Editorials ▼</a>
-                        <ul class="dropdown">
-                            <li><a th:href="@{editorial/list}">Editorial list</a></li>
-                            <li><a th:href="@{editorial/signin}">Make editorial</a></li>
-                        </ul>
-                    </li>
-                    <li id="final" class="dropdown-container">
-                        <a href="#">Profile ▼</a>
-                        <ul class="dropdown">
-                            <li><a th:href="@{/login}">Log in</a></li>
-                            <li><a href="/logout">Log out</a></li>
-                            <li><a th:href="@{/signin}">Sign in</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    
+    <header th:replace= "/fragments/navbar :: header"></header>
 
     <div id="main-menu">
         <section class="success-error">
@@ -76,55 +27,15 @@
         <main>
             <div class="container">
                 <h1>BIBLIOTECA</h1>
-                <h3>Find all books here</h3>
+                <h3><a href=""></a>Find all books here</h3>
                 <div>
-                    <button><a href="">Book list</a></button>
+                    <button><a th:href="@{/book/list}">Book list</a></button>
                 </div>
             </div>
         </main>
     </div>
 
-    <footer>
-        <div class="container">
-            <h2>▼ More about us ▼</h2>
-            <div>
-                <h3>News</h3>
-                <div class="content">
-                    <li><a href="">Where do we help?</a></li>
-                    <li><a href="">How to learn more</a></li>
-                    <li><a href="">Employee</a></li>
-                    <li><a href="">Reports</a></li>
-                </div>
-            </div>
-            <div>
-                <h3>Resorces</h3>
-                <div class="content">
-                    <li><a href="">Contact us</a></li>
-                    <li><a href="">Events</a></li>
-                    <li><a href="">Shipments</a></li>
-                    <li><a href="">Address</a></li>
-                </div>
-            </div>
-            <div>
-                <h3>Social Media</h3>
-                <div class="content">
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter</a></li>
-                    <li><a href="">Youtube</a></li>
-                    <li><a href="">Twitch</a></li>
-                </div>
-            </div>
-            <div>
-                <h3>Who are we?</h3>
-                <div class="content">
-                    <li><a href="">Who are we?</a></li>
-                    <li><a href="">Our history</a></li>
-                    <li><a href="">Our goals</a></li>
-
-                </div>
-            </div>
-        </div>
-    </footer>
+    <footer th:replace= "/fragments/footer :: footer"></footer>
 
     <script src="/script/script.js"></script>
 </body>

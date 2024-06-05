@@ -1,0 +1,45 @@
+<header>
+    <nav>
+        <div class="container-icon">
+            <div class="icono-menu">
+                <i id="fa-solid" class="fa-solid fa-bars"></i>
+            </div>
+            <div class="logo">
+                <a href="">Biblioteca</a>
+            </div>
+        </div>
+        <div id="container-items" class="container-items active">
+            <ul>
+                <li th:if="${session.usuariosession != null}" class="dropdown-container">
+                    <a href="#">Books ▼</a>
+                    <ul class="dropdown">
+                        <li><a th:href="@{/book/list}">Book list</a></li>
+                        <li><a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/book/signin}">Make books</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.usuariosession != null}" class="dropdown-container">
+                    <a href="#">Autors ▼</a>
+                    <ul class="dropdown">
+                        <li><a th:href="@{/autor/list}">Autor list</a></li>
+                        <li><a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{autor/signin}">Make autor</a></li>
+                    </ul>
+                </li>
+                <li th:if="${session.usuariosession != null}" class="dropdown-container">
+                    <a href="#">Editorials ▼</a>
+                    <ul class="dropdown">
+                        <li><a th:href="@{/editorial/list}">Editorial list</a></li>
+                        <li><a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/editorial/signin}">Make editorial</a></li>
+                    </ul>
+                </li>
+                <li id="final" class="dropdown-container">
+                    <a href="#">Profile ▼</a>
+                    <ul class="dropdown">
+                        <li><a th:if="${session.usuariosession == null}" href="/signin">Sign in</a></li>
+                        <li><a th:if="${session.usuariosession == null}" href="/login">Log in</a></li>
+                        <li><a th:if="${session.usuariosession != null}" href="/logout">Log out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

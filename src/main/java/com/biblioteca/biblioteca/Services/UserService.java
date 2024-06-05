@@ -11,10 +11,15 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
 import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Enumerations.Rol;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Repositories.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Service
@@ -73,8 +78,16 @@ public class UserService implements UserDetailsService {
         User usuario = userRepository.searchEmail(email);
         if (usuario!=null) {
             List<GrantedAuthority> permiso = new ArrayList<>();
+
             GrantedAuthority p = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+
             permiso.add(p);
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+
+            HttpSession sesion = attr.getRequest().getSession(true);
+
+            sesion.setAttribute("usuariosession", usuario);
 
             return (UserDetails) new User();
         }

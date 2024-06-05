@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Services.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/")
@@ -47,7 +50,7 @@ public class PortalController {
 
     @GetMapping("/login")
     public String login(@RequestParam(required = false) String Error, ModelMap model) {
-        
+
         if (Error != null) {
             model.put("Error", "User or password wrong");
         }
@@ -56,8 +59,13 @@ public class PortalController {
 
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
     @GetMapping("/main")
-    public String main() {
+    public String main(HttpSession session) {
+        User logged = (User) session.getAttribute("usuariosession");
+
+        if (logged.getRol().toString().equals("ADMIN")) {
+            return "redirect:/admin/dashboard";
+        }
         return "main.html";
     }
-    
+
 }

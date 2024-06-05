@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+<head th:replace="/fragments/head :: head"></head>
+
 
 <body>
+    <header th:replace="/fragments/navbar :: header"></header>
+
     <div>
         <table>
             <tr>
@@ -16,6 +15,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Autor</th>
                 <th scope="col">Editorial</th>
+                <th SEC:AUTHORIZE="hasRole('ADMIN')" scope="col">Actions</th>
             </tr>
             <tbody th:each="book : ${books}">
                 <tr>
@@ -24,11 +24,16 @@
                     <td th:text="${book.type}"></td>
                     <td th:text="${book.autor.name}"></td>
                     <td th:text="${book.editorial.name}"></td>
+                    <td>
+                        <a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/book/modify/__${book.ID}__}">Modify </a>
 
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <footer th:replace="/fragments/footer :: footer"></footer>
+
 </body>
 
 </html>
