@@ -5,12 +5,14 @@
 
 body {
     background-color: rgb(255, 255, 255);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: monospace;
 }
 
 header {
     background-color: rgb(255, 255, 255);
     padding: 10px;
+    position: fixed;
+    width: 100%;
 }
 
 header nav {
@@ -36,6 +38,7 @@ header nav .icono-menu {
 
 header nav .logo {
     display: flex;
+    margin-right: 10px;
     justify-content: center;
 }
 
@@ -49,37 +52,60 @@ header nav .logo a {
 header nav .container-items {
     background-color: rgb(42, 42, 42);
     box-shadow: 0px 0px 2px 2px rgb(66, 66, 66);
-    width: 50%;
+    width: 70%;
     height: 100vh;
-    position: absolute;
-    top: 70px;
+    position: fixed;
+    top: 73px;
     left: 0;
     transition: all .5s ease;
 }
 
 header nav .container-items ul {
     padding: 10px;
+    list-style-type: none;
 }
 
-header nav .container-items li a {
-    list-style: none;
+header nav .container-items a {
+    text-decoration: none;
     display: block;
     cursor: pointer;
     color: white;
     padding: 10px 50px;
+    font-size: 20px;
+    transition: 0.5s;
+}
+
+header nav .container-items ul li {
+    position: relative;
+}
+
+header nav .container-items ul .dropdown-container:hover {
+    margin-bottom: 100px;
 }
 
 header nav .container-items ul li a:hover {
     background-color: white;
     color: rgb(42, 42, 42);
     transition: 0.3s;
+    font-weight: bold;
 }
 
-header nav .container-items li a {
-    text-decoration: none;
-    color: white;
-    transition: 0.5s;
-    font-size: 20px;
+header nav .container-items ul li .dropdown li {
+    display: block;
+}
+
+header nav .container-items .dropdown {
+    position: absolute;
+    z-index: 999;
+    display: none;
+    background-color: rgb(85, 85, 85);
+    width: 90%;
+}
+
+
+header nav .container-items ul li:hover .dropdown {
+    display: block;
+    margin-bottom: 40px;
 }
 
 .active {
@@ -91,55 +117,111 @@ header nav .container-items li a {
     transition: all .5s ease;
 }
 
-.hr {
+#main-menu {
+    background-image: url(/img/background-main.png);
+    padding: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
     display: flex;
     justify-content: center;
-}
-
-hr {
-    width: 80%;
-}
-
-#main-menu {
-    background-image: url(/img/main-menu-back.jpg);
-    padding: 30px;
+    align-items: center;
 }
 
 #main-menu main .container h1 {
     color: white;
     padding: 10px;
     font-size: 50px;
-
+    text-align: center;
 }
 
 #main-menu main .container h3 {
     color: white;
     padding: 10px;
     font-size: 30px;
-
+    text-align: center;
 }
 
 #main-menu main .container div {
     padding: 10px;
+    display: flex;
+    justify-content: center;
 }
 
-#main-menu main .container div button{
+#main-menu main .container div button {
     padding: 10px;
     background-color: chartreuse;
     border-radius: 10px;
-} 
+}
 
-#main-menu main .container div button:hover{
+#main-menu main .container div button:hover {
     background-color: rgb(185, 243, 128);
-} 
+}
 
 
-#main-menu main .container div button:active{
+#main-menu main .container div button:active {
     background-color: rgb(216, 236, 195);
-} 
+}
 
-#main-menu main .container div button a{
+#main-menu main .container div button a {
     font-size: 20px;
     text-decoration: none;
     color: black;
+}
+
+footer {
+    height: 100vh;
+    font-size: 1.6em;
+    display: flex;
+    justify-content: center;
+}
+
+footer .container {
+    text-align: center;
+    width: 70%;
+}
+
+footer h2 {
+    padding: 40px;
+}
+
+footer .container div {
+    padding: 10px;
+}
+
+footer .container div .content {
+    display: flex;
+    flex-direction: column;
+}
+
+footer div h3 {
+    font-style: italic;
+    background-color: rgb(66, 66, 66);
+    padding: 10px;
+    color: white;
+}
+
+footer div li {
+    list-style: none;
+    color: black;
+    font-style: italic;
+    padding: 8px;
+}
+
+footer div a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+}
+
+footer div a:hover {
+    background-color: rgb(42, 42, 42);
+    transition: 0.5s;
+    color: white;
+}
+
+footer div a:active {
+    background-color: rgb(66, 66, 66);
+    color-scheme: white;
 }
