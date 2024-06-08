@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace= "/fragments/head :: head"></head>
+<head th:replace="/fragments/head :: head"></head>
 
 
 <body>
 
-    <header th:replace= "/fragments/navbar :: header"></header>
+    <header th:replace="/fragments/navbar :: header"></header>
 
-    <div>
+    <div id="forms">
         <form th:action="@{/signedin}" method="post">
             <div>
-                <h3>Signin!</h3>
+                <h3 class="title">Sign in!</h3>
             </div>
-            <div class="">
-                <input type="text" name="name" placeholder="name" th:value="${name}">
+            <div class="input-class">
+                <input class="input-content" type="text" name="name" placeholder="name" th:value="${name}">
             </div>
-            <div class="">
-                <input type="text" name="email" placeholder="email" th:value="${email}">
+            <div class="input-class">
+                <input class="input-content" type="text" name="email" placeholder="email" th:value="${email}">
             </div>
-            <div class="">
-                <input type="password" name="password" placeholder="password" th:value="${password}">
+            <div class="input-class">
+                <input class="input-content" type="password" name="password" placeholder="password"
+                    th:value="${password}">
             </div>
-            <div class="">
-                <input type="password" name="password2" placeholder="repeat password" th:value="${password2}">
+            <div class="input-class">
+                <input class="input-content" type="password" name="password2" placeholder="repeat password"
+                    th:value="${password2}">
             </div>
-            <button type="submit">signin</button>
+            <button class="button-form" type="submit">Submit</button>
             <div>
                 <div th:if="${Error!=null}">
                     <h5>Error</h5>
@@ -39,10 +41,11 @@
                     <p th:text="${Success}"></p>
                 </div>
             </div>
+            <a th:href="@{/}">Back to index</a>
         </form>
     </div>
 
-    <footer th:replace= "/fragments/footer :: footer"></footer>
+    <footer th:replace="/fragments/footer :: footer"></footer>
 
     <script src="/script/script.js"></script>
 
