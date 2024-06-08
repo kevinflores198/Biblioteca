@@ -7,6 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -21,6 +22,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    @OneToOne
+    private Image image;
 
     public User() {
     }
