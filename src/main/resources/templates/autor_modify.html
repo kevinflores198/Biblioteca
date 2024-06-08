@@ -7,15 +7,16 @@
 <body>
     <header th:replace= "/fragments/navbar :: header"></header>
 
-    <div>
+    <div class="container">
         <form th:action="@{/autor/modify/__${autor.ID}__}" method="POST">
+            <h1>Edit autor</h1>
             <input hidden th:value="${ID}" name="ID">
-            <div>
-                <label>Modify Autor</label>
+            <div class="form-group">
+                <label>Modify name</label>
                 <!-- en este input deberia usar th:value="${autor.name}" pero sin eso, funciona a la perfeccion-->
-                <input type="text" name="name">
+                <input class="form-group" type="text" name="name">
             </div>
-            <button type="submit">Update</button>
+            <button class="btn" type="submit">Update</button>
         </form>
     </div>
     <footer th:replace= "/fragments/footer :: footer"></footer>

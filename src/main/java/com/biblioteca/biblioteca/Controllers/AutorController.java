@@ -52,7 +52,6 @@ public class AutorController {
 
     @GetMapping("/modify/{ID}")
     public String modify(@PathVariable String ID, ModelMap model) {
-System.out.println("HELLO");
         model.put("autor", autorService.getOne(ID));
         return "autor_modify.html";
     }

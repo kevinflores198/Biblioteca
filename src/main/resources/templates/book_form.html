@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace= "/fragments/head :: head"></head>
+<head th:replace="/fragments/head :: head"></head>
 
 <body>
-    <header th:replace= "/fragments/navbar :: header"></header>
+    <header th:replace="/fragments/navbar :: header"></header>
 
     <div class="container">
+        <div class="container-cartel">
+            <div class="error-success">
+                <div>
+                    <div class="error" th:if="${Error!=null}">
+                        <h1>Error</h1>
+                        <p th:text="${Error}"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="success" th:if="${Success!=null}">
+                        <h1>Success</h1>
+                        <p th:text="${Success}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <form action="/book/signedin" method="POST">
             <h1>Charge book here</h1>
             <div class="form-group">
@@ -32,25 +49,9 @@
             </div>
 
             <button type="submit" class="btn">Save</button>
-
-            <div>
-                <div th:if="${Error!=null}">
-                    <h5>Error</h5>
-                    <p th:text="${Error}"></p>
-                </div>
-            </div>
-
-            <div>
-                <div th:if="${Success!=null}">
-                    <h5>Success</h5>
-                    <p th:text="${Success}"></p>
-                </div>
-            </div>
-
-
         </form>
     </div>
-    <footer th:replace= "/fragments/footer :: footer"></footer>
+    <footer th:replace="/fragments/footer :: footer"></footer>
     <script src="/script/script.js"></script>
 
 </body>

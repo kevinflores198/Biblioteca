@@ -56,9 +56,11 @@ public class EditorialController {
     }
 
     @PostMapping("/modify/{ID}")
-    public String modify(@PathVariable String ID, String name, ModelMap model) {
+    public String modify(@PathVariable String ID,
+            String name,
+            ModelMap model) {
         try {
-            editorialService.modifyEditorial(name, ID);
+            editorialService.modifyEditorial(ID, name);
             return "redirect:../list";
         } catch (Exception e) {
             model.put("Error", e.getMessage());

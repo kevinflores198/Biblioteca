@@ -9,6 +9,23 @@
     <header th:replace="/fragments/navbar :: header"></header>
 
     <div id="forms">
+        <div class="container">
+            <div class="error-success">
+                <div>
+                    <div class="error" th:if="${Error!=null}">
+                        <h1>Error</h1>
+                        <p th:text="${Error}"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="success" th:if="${Success!=null}">
+                        <h1>Success</h1>
+                        <p th:text="${Success}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <form th:action="@{/signedin}" method="post">
             <div>
                 <h3 class="title">Sign in!</h3>
@@ -28,19 +45,6 @@
                     th:value="${password2}">
             </div>
             <button class="button-form" type="submit">Submit</button>
-            <div>
-                <div th:if="${Error!=null}">
-                    <h5>Error</h5>
-                    <p th:text="${Error}"></p>
-                </div>
-            </div>
-
-            <div>
-                <div th:if="${Success!=null}">
-                    <h5>Success</h5>
-                    <p th:text="${Success}"></p>
-                </div>
-            </div>
             <a th:href="@{/}">Back to index</a>
         </form>
     </div>

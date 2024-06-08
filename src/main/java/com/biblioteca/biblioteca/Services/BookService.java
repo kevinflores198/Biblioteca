@@ -47,6 +47,10 @@ public class BookService {
         bookRepository.save(book);
     }
 
+    public Editorial getOne(String id){
+        return editorialRepository.getReferenceById(id);
+    }
+
     public List<Book> booklist(){
 
         List<Book> books = new ArrayList<>();

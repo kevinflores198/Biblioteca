@@ -13,12 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Enumerations.Rol;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Repositories.UserRepository;
-
 import jakarta.servlet.http.HttpSession;
 
 
@@ -60,10 +58,10 @@ public class UserService implements UserDetailsService {
         }
     }
 
-
-    public User getOne(String ID){
-        return userRepository.getReferenceById(ID);
+    public User getOne(String id){
+        return userRepository.getReferenceById(id);
     }
+
 
     @Transactional
     public List<User> listarUsuarios() {

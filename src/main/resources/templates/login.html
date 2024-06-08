@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace= "/fragments/head :: head"></head>
+<head th:replace="/fragments/head :: head"></head>
 
 
 <body>
 
-    <header th:replace= "/fragments/navbar :: header"></header>
+    <header th:replace="/fragments/navbar :: header"></header>
 
     <div id="forms">
+        <div class="container">
+            <div class="error-success">
+                <div>
+                    <div class="error" th:if="${Error!=null}">
+                        <h1>Error</h1>
+                        <p th:text="${Error}"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="success" th:if="${Success!=null}">
+                        <h1>Success</h1>
+                        <p th:text="${Success}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <form th:action="@{/logincheck}" method="post">
             <div>
-                <h3 class="title" >Access to Biblioteca</h3>
+                <h3 class="title">Access to Biblioteca</h3>
             </div>
             <div class="input-class">
                 <input class="input-content" type="text" name="email" placeholder="email" th:value="${email}">
             </div>
             <div class="input-class">
-                <input class="input-content" type="password" name="password" placeholder="password" th:value="${password}">
+                <input class="input-content" type="password" name="password" placeholder="password"
+                    th:value="${password}">
             </div>
             <button class="button-form" type="submit">Access</button>
-            
-            <div>
-                <div th:if="${Error!=null}">
-                    <h5>Error</h5>
-                    <p th:text="${Error}"></p>
-                </div>
-            </div>
-
-            <div>
-                <div th:if="${Success!=null}">
-                    <h5>Success</h5>
-                    <p th:text="${Success}"></p>
-                </div>
-            </div>
             <a th:href="@{/}">Back to index</a>
         </form>
     </div>
-    <footer th:replace= "/fragments/footer :: footer"></footer>
+    <footer th:replace="/fragments/footer :: footer"></footer>
     <script src="/script/script.js"></script>
 
 </body>

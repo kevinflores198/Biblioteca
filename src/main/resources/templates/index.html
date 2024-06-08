@@ -8,28 +8,34 @@
     <header th:replace= "/fragments/navbar :: header"></header>
 
     <div id="main-menu">
-        <section class="success-error">
-            <div>
-                <div th:if="${Success}!=null" class="">
-                    <div class="">
-                        <h5 class="">Exito</h5>
-                        <p class="" th:text="${Success}"></p>
+        <div class="container">
+            <div class="error-success">
+                <div>
+                    <div class="error" th:if="${Error!=null}">
+                        <h1>Error</h1>
+                        <p th:text="${Error}"></p>
                     </div>
                 </div>
-                <div th:if="${Error}!=null" class="">
-                    <div class="">
-                        <h5 class="">Error ð</h5>
-                        <p class="" th:text="${Error}"></p>
+
+                <div>
+                    <div class="success" th:if="${Success!=null}">
+                        <h1>Success</h1>
+                        <p th:text="${Success}"></p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
         <main>
             <div class="container">
+                
                 <h1>BIBLIOTECA</h1>
                 <h3><a href=""></a>Find all books here</h3>
                 <div>
                     <button><a th:href="@{/book/list}">Book list</a></button>
+                </div>
+
+                <div>
+                    <button class="button"><a href="/login">Log in</a></button>
                 </div>
             </div>
         </main>

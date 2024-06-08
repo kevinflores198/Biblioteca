@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +55,6 @@ public class bookController {
 
         try {
             bookService.makeBook(isbn, title, type, idAutor, idEditorial);
-
             model.put("Success", "Book was charged correctly");
         } catch (MyException e) {
             List<Autor> autors = autorService.autorList();
@@ -69,12 +69,45 @@ public class bookController {
     }
 
     @GetMapping("/list")
-    public String listing(ModelMap model){
+    public String listing(ModelMap model) {
         List<Book> books = bookService.booklist();
 
         model.addAttribute("books", books);
 
         return "book_list.html";
+    }
+
+    @GetMapping("/modify/{isbn}")
+    public String modify(@PathVariable String isbn, ModelMap model) {
+        model.put("book", bookService.getOne(isbn));
+        return "book_modify.html";
+    }
+
+    @PostMapping("/modify/{isbn}")
+    public String modify(@PathVariable Long isbn, String title, Integer type, String idAutor, String idEditorial,
+            ModelMap model) {
+        try {
+            List<Autor> autors = autorService.autorList();
+            List<Editorial> editorials = editorialService.editorialList();
+
+            model.addAttribute("autors", autors);
+            model.addAttribute("editorials", editorials);
+
+            bookService.modifyBook(isbn, title, type, idAutor, idEditorial);
+
+            return "redirect:../list";
+
+        } catch (MyException ex) {
+            List<Autor> autors = autorService.autorList();
+            List<Editorial> editorials = editorialService.editorialList();
+
+            model.put("Error", ex.getMessage());
+
+            model.addAttribute("autors", autors);
+            model.addAttribute("editorials", editorials);
+
+            return "book_modify.html";
+        }
     }
 
 }

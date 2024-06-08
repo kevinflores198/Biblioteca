@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Services.UserService;
-
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -43,7 +41,7 @@ public class PortalController {
             model.put("Error", e.getMessage());
             model.put("name", name);
             model.put("email", email);
-            return "signin.html";
+            return "index.html";
         }
         return "index.html";
     }

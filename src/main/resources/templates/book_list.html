@@ -7,32 +7,35 @@
 <body>
     <header th:replace="/fragments/navbar :: header"></header>
 
-    <div>
-        <table>
-            <tr>
-                <th scope="col">ISBN</th>
-                <th scope="col">Book name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Autor</th>
-                <th scope="col">Editorial</th>
-                <th SEC:AUTHORIZE="hasRole('ADMIN')" scope="col">Actions</th>
-            </tr>
-            <tbody th:each="book : ${books}">
+    <div class="list">
+        <div class="container">
+            <table>
+                <h1>Book table</h1>
                 <tr>
-                    <th scope="row" th:text="${book.isbn}"></th>
-                    <td th:text="${book.title}"></td>
-                    <td th:text="${book.type}"></td>
-                    <td th:text="${book.autor.name}"></td>
-                    <td th:text="${book.editorial.name}"></td>
-                    <td>
-                        <a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/book/modify/__${book.ID}__}">Modify </a>
-
-                    </td>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Book name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Editorial</th>
+                    <th SEC:AUTHORIZE="hasRole('ADMIN')" scope="col">Actions</th>
                 </tr>
-            </tbody>
-        </table>
+                <tbody th:each="book : ${books}">
+                    <tr>
+                        <td class="id-product" scope="row" th:text="${book.isbn}"></th>
+                        <td th:text="${book.title}"></td>
+                        <td th:text="${book.type}"></td>
+                        <td th:text="${book.autor.name}"></td>
+                        <td th:text="${book.editorial.name}"></td>
+                        <td SEC:AUTHORIZE="hasRole('ADMIN')">
+                            <i class="fa-solid fa-pen"></i><a  th:href="@{/book/modify/__${book.ID}__}">Modify </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     <footer th:replace="/fragments/footer :: footer"></footer>
+    <script src="/script/script.js"></script>
 
 </body>
 

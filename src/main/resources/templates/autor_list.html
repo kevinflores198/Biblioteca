@@ -19,10 +19,11 @@
                 </tr>
                 <tbody th:each="autor : ${autors}">
                     <tr>
-                        <th class="id-product" scope="row" th:text="${autor.ID}"></th>
+                        <td class="id-product" scope="row" th:text="${autor.ID}">
+                            </th>
                         <td th:text="${autor.name}"></td>
-                        <td>
-                            <a SEC:AUTHORIZE="hasRole('ADMIN')" th:href="@{/autor/modify/__${autor.ID}__}">Modify </a>
+                        <td SEC:AUTHORIZE="hasRole('ADMIN')">
+                            <i class="fa-solid fa-pen"></i> <a th:href="@{/autor/modify/__${autor.ID}__}">Modify </a>
                         </td>
                     </tr>
                 </tbody>
