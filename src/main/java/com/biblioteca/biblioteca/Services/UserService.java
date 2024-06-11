@@ -2,6 +2,7 @@ package com.biblioteca.biblioteca.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,12 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import com.biblioteca.biblioteca.Entities.Image;
 import com.biblioteca.biblioteca.Entities.User;
 import com.biblioteca.biblioteca.Enumerations.Rol;
 import com.biblioteca.biblioteca.Exceptions.MyException;
 import com.biblioteca.biblioteca.Repositories.UserRepository;
 import jakarta.servlet.http.HttpSession;
-
 
 @Service
 public class UserService implements UserDetailsService {
@@ -26,8 +28,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ImageService imageService;
+
     @Transactional
-    public void signin(String name, String email, String password, String password2) throws MyException {
+    public void signin(MultipartFile archive, String name, String email, String password, String password2)
+            throws MyException {
 
         validate(name, email, password, password2);
 
@@ -37,7 +43,42 @@ public class UserService implements UserDetailsService {
         user.setEmail(email);
         user.setPassword(new BCryptPasswordEncoder().encode(password));
         user.setRol(Rol.USER);
+
+        Image image = imageService.save(archive);
+
+        user.setImage(image);
+
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void update(MultipartFile archive, String id, String name, String email, String password, String password2)
+            throws MyException {
+
+        validate(name, email, password, password2);
+
+        Optional<User> answer = userRepository.findById(id);
+
+        if (answer.isPresent()) {
+            User user = answer.get();
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(new BCryptPasswordEncoder().encode(password));
+            user.setRol(Rol.USER);
+
+            String idImage = null;
+
+            if (user.getImage() != null) {
+                idImage = user.getImage().getId();
+            }
+
+            Image image = imageService.updatImage(archive, idImage);
+
+            user.setImage(image);
+
+            userRepository.save(user);
+        }
+
     }
 
     public void validate(String name, String email, String password, String password2) throws MyException {
@@ -58,10 +99,9 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public User getOne(String id){
+    public User getOne(String id) {
         return userRepository.getReferenceById(id);
     }
-
 
     @Transactional
     public List<User> listarUsuarios() {
@@ -74,10 +114,10 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User usuario = userRepository.searchEmail(email);
-        if (usuario!=null) {
+        if (usuario != null) {
             List<GrantedAuthority> permiso = new ArrayList<>();
 
-            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
 
             permiso.add(p);
 

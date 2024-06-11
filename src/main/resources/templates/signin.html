@@ -5,9 +5,7 @@
 
 
 <body>
-
     <header th:replace="/fragments/navbar :: header"></header>
-
     <div id="forms">
         <div class="container">
             <div class="error-success">
@@ -26,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <form th:action="@{/signedin}" method="post">
+        <form th:action="@{/signedin}" method="post" enctype="multipart/form-data">
             <div>
                 <h3 class="title">Sign in!</h3>
             </div>
@@ -36,6 +34,12 @@
             <div class="input-class">
                 <input class="input-content" type="text" name="email" placeholder="email" th:value="${email}">
             </div>
+
+            <div class="input-class">
+                <input class="input-file" id="upload" type="file" name="archive">
+                <label for="upload">Upload file...</label>
+            </div>
+
             <div class="input-class">
                 <input class="input-content" type="password" name="password" placeholder="password"
                     th:value="${password}">

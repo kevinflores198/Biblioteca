@@ -12,8 +12,8 @@
             <table>
                 <h1>Book table</h1>
                 <tr>
-                    <th scope="col">ISBN</th>
                     <th scope="col">Book name</th>
+                    <th scope="col">ISBN</th>
                     <th scope="col">Number</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Editorial</th>
@@ -21,13 +21,14 @@
                 </tr>
                 <tbody th:each="book : ${books}">
                     <tr>
-                        <td class="id-product" scope="row" th:text="${book.isbn}"></th>
                         <td th:text="${book.title}"></td>
+                        <td class="id-product" scope="row" th:text="${book.isbn}"></td>
                         <td th:text="${book.type}"></td>
                         <td th:text="${book.autor.name}"></td>
                         <td th:text="${book.editorial.name}"></td>
                         <td SEC:AUTHORIZE="hasRole('ADMIN')">
-                            <i class="fa-solid fa-pen"></i><a  th:href="@{/book/modify/__${book.ID}__}">Modify </a>
+                            <i class="fa-solid fa-pen"></i>
+                            <a th:href="@{/book/modify/__${book.ID}__}">Modify </a>
                         </td>
                     </tr>
                 </tbody>

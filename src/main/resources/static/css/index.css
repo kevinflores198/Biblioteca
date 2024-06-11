@@ -20,7 +20,7 @@ body {
     text-align: center;
 }
 
-.container .error-success .error:hover{
+.container .error-success .error:hover {
     background-color: rgb(249, 150, 150);
 }
 
@@ -32,7 +32,7 @@ body {
     text-align: center;
 }
 
-.container .error-success .success:hover{
+.container .error-success .success:hover {
     background-color: rgb(220, 246, 168);
 }
 
@@ -232,21 +232,26 @@ header nav .container-items ul li:hover .dropdown {
 
 .list {
     font-size: 20px;
-    justify-content: center;
     align-items: start;
-    display: flex;
-    width: 100%;
     height: 100vh;
 }
 
 .list .container {
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    overflow-x: auto;
 }
 
 
 .list .container table {
     color: black;
+    table-layout: fixed;
 }
+
+
 
 .list .container h1 {
     text-align: center;
@@ -255,18 +260,24 @@ header nav .container-items ul li:hover .dropdown {
 }
 
 .list table tbody th {
-    font-size: 15px;
-    padding: 5px;
+    font-size: 18px;
+    padding: 10px;
     text-align: start;
 }
 
 .list td {
-    padding: 5px;
-    font-size: 18px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.list td:hover {
+    background-color: rgb(249, 150, 150);
+    transition: 0.5s;
 }
 
 .list th {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(66, 66, 66);
+    color: white;
 }
 
 .list th,
@@ -345,6 +356,12 @@ footer div a:active {
 
 footer .footer2 {
     height: 100vh;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color: rgb(42, 42, 42);
 }
 
@@ -366,10 +383,6 @@ footer .footer2 .container h2 {
     padding: 15px;
 }
 
-footer .footer2 .container .social {
-    display: flex;
-    justify-content: space-evenly;
-}
 
 footer .footer2 .container .social i {
     font-size: 25px;
@@ -407,7 +420,7 @@ footer .footer2 .container .social i:active {
     padding: 25px;
     box-shadow: 7px 15px 30px rgba(0, 0, 0, 0.777);
     width: 100%;
-
+height: 500px;
 }
 
 #forms form .title {
@@ -430,6 +443,21 @@ footer .footer2 .container .social i:active {
     margin-bottom: 15px;
 }
 
+#forms form .input-file[type="file"] {
+    display: none;
+}
+
+#forms form label {
+    display: inline-block;
+    color: white;
+    background-color: rgb(249, 150, 150);
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding: 15px;
+    width: 100%;
+}
+
 #forms form .button-form {
     width: 100%;
     padding: 10px;
@@ -444,6 +472,7 @@ footer .footer2 .container .social i:active {
     color: white;
     transform: .5s;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 #forms form .button-form:hover {
@@ -482,4 +511,69 @@ footer .footer2 .container .social i:active {
 
 #forms form a:active {
     background-color: rgb(228, 112, 112);
+}
+
+@media (min-width:900px) {
+    #forms form {
+        width: 60%;
+    }
+}
+
+
+@media (min-width:1200px) {
+
+    header nav .container-items {
+        width: 30%;
+    }
+
+    footer .container .footer1 {
+        display: flex;
+        justify-content: center;
+    }
+
+    footer .container .footer1 h3 {
+        font-size: 20px;
+    }
+
+    footer .container .footer1 .content a {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    footer .footer2 .container .social {
+        justify-content: center;
+
+    }
+
+    footer .footer2 .container .social i {
+        padding: 10px;
+        font-size: 40px;
+    }
+
+    /* lists */
+
+    .list {
+        display: flex;
+        justify-content: center;
+    }
+
+    .list .container {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+
+    #forms {
+        display: flex;
+        justify-content: center;
+    }
+
+    #forms form {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 }

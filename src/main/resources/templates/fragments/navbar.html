@@ -37,6 +37,8 @@
                         <li><a th:if="${session.usuariosession == null}" href="/signin">Sign in</a></li>
                         <li><a th:if="${session.usuariosession == null}" href="/login">Log in</a></li>
                         <li><a th:if="${session.usuariosession != null}" href="/logout">Log out</a></li>
+                        <li><a th:if="${session.usuariosession != null}" th:href="@{/profile}">Modify</a></li>
+
                     </ul>
                 </li>
             </ul>
